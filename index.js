@@ -10,12 +10,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(bodyParser.json());
 
-const port = 3000;
+const PORT = 5000;
 
 const userDatabase = [];
 
 app.get('/', (req, res) => {
-    res.send("Hii I am Live Again 2 !");
+    res.send("Hii I am Live Again 5 !");
 });
 // Create users endpoint
 app.post('/users', (req, res) => {
@@ -38,8 +38,8 @@ app.post('/users', (req, res) => {
     })
 });
 
-app.listen(port, () => {
-    console.log(`Server running on port ${port}`);
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
 });
 
 module.exports = app;
