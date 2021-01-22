@@ -1,5 +1,5 @@
 var cors = require('cors');
-
+require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const sendSms = require('./twilio');
@@ -10,12 +10,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(bodyParser.json());
 
-const PORT = 5000;
+const PORT = 3000;
 
 const userDatabase = [];
 
 app.get('/', (req, res) => {
-    res.send("Hii I am Live Again 5 !");
+    res.send("Hii I am Live Again 6 !");
 });
 // Create users endpoint
 app.post('/users', (req, res) => {
@@ -38,7 +38,7 @@ app.post('/users', (req, res) => {
     })
 });
 
-app.listen(PORT, () => {
+app.listen(process.env.PORT || PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
 
