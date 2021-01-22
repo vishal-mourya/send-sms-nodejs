@@ -1,11 +1,11 @@
 var cors = require('cors');
-app.use(cors());
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const sendSms = require('./twilio');
 
 const app = express();
-
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(bodyParser.json());
@@ -15,7 +15,7 @@ const port = 3000;
 const userDatabase = [];
 
 app.get('/', (req, res) => {
-    res.send("Hii I am Live!");
+    res.send("Hii I am Live Again !");
 });
 // Create users endpoint
 app.post('/users', (req, res) => {
