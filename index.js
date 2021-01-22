@@ -12,6 +12,9 @@ const port = 3000;
 
 const userDatabase = [];
 
+app.get('/', (req, res) => {
+    res.send("Hii I am Live!");
+});
 // Create users endpoint
 app.post('/users', (req, res) => {
     const { email, password, phone } = req.body;
