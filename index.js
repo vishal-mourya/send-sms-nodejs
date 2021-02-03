@@ -5,6 +5,10 @@
 const express = require('express');
 // Like below we create, the app or server from express
 const app = express();
+var cors = require('cors');
+
+
+app.use(cors());
 
 // Assigning the port number to run our server on using Environment variable
 require('dotenv').config();
