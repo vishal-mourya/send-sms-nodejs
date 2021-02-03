@@ -151,6 +151,7 @@ router.get('/getFreeContacts', (req, res) => {
         //     console.log(ans[i]);
         // }
         // console.log(`user : ${user}`);
+        console.log(`ans : ${ans}`);
         res.send(ans);
     });
     // console.log("Baadme")
