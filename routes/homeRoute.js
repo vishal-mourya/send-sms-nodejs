@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
 
 // This Function will generate OTP of 6 unique digit
 function generateOTP() {
-    const _OTP = Math.floor(100000 + Math.random() * 900000);
+    const _OTP = Math.floor(10000 + Math.random() * 90000);
     console.log(`_OTP : ${_OTP}`);
     return _OTP;
 }
