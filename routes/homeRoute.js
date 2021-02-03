@@ -45,13 +45,15 @@ router.post('/register', (req, res) => {
         // if (err) {
         //     return res.send({ msg: err.message });
         // }
-
-        // if (!err) {
-        res.send({
-            message: 'Account created successfully, kindly check your phone to activate your account!',
-            data: user
-        });
-        // }
+        console.log(`err : ${err}`);
+        if (err == null) {
+            res.send({
+                message: 'Account created successfully, kindly check your phone to activate your account!',
+                data: user
+            });
+        } else {
+            res.send(err);
+        }
     });
 
     const welcomeMessage = `Welcome to my Chillz! Your verification code is ${_OTP}`;
