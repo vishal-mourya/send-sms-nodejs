@@ -1,45 +1,58 @@
-var cors = require('cors');
-require('dotenv').config();
+// Main file from where our project will start
+
+// using express for forwarding the call
+// to our routes fron index.js
 const express = require('express');
-const bodyParser = require('body-parser');
-const sendSms = require('./twilio');
-
+// Like below we create, the app or server from express
 const app = express();
-app.use(cors());
-app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(bodyParser.json());
+// Assigning the port number to run our server on using Environment variable
+require('dotenv').config();
 
-const PORT = 3000;
+const port = process.env.PORT || 4000;
+// console.log(process.env.PORT);
 
-const userDatabase = [];
+// importing mongoose module as it make 
+// very convenient to handle MongoDB
+const mongoose = require('mongoose');
 
-app.get('/', (req, res) => {
-    res.send("Hii I am Live Again 6 !");
-});
-// Create users endpoint
-app.post('/users', (req, res) => {
-    const { email, password, phone } = req.body;
-    const user = {
-        email,
-        password,
-        phone
-    };
-
-    userDatabase.push(user);
-
-    const welcomeMessage = 'Welcome to my Chillz! Your verification code is 54875';
-
-    sendSms(user.phone, welcomeMessage);
-
-    res.status(201).send({
-        message: 'Account created successfully, kindly check your phone to activate your account!',
-        data: user
-    })
+// Below code is used to connect nodejs to MongoDB using mongoose
+mongoose.connect(process.env.DB_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
 });
 
-app.listen(process.env.PORT || PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+// if any error will occur while connecting mongoDB to nodejs
+// below code will be excuted of mongoose.connection.on
+mongoose.connection.on('error', (err) => {
+    console.log("MongoDB Not Connected!" + err.message);
 });
 
-module.exports = app;
+// If mongoDB is succesfully connected to Nodejs then
+// below code of mongoose.connection.once will be executed
+mongoose.connection.once('open', () => {
+    console.log("MongoDB Connected Succesfully!");
+});
+
+// below line will import the userSignupSchema model 
+// so that we can use this schema for storing doument in this structure 
+// in MongoDB
+// const userSignupSchema = require('./userSignupSchema');
+
+
+// below line will import the SignUpRoute route 
+// so that we can use this route from index.js
+const homeRoute = require('./routes/homeRoute');
+// const googleSingUpRoute = require('./routes/login-signup-google');
+
+// below line will forward API call to our routers to handle
+app.use('/', homeRoute);
+
+// Below line will start our server on the port as defined in PORT
+app.listen(port, function() {
+    console.log("Server is Up and running on port : " + port);
+});
+
+// 1. Google Sinup 
+// 2. LinkedIn - signup
+// 3. Github - Signups
