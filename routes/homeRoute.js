@@ -135,15 +135,17 @@ router.get('/getFreeContacts', (req, res) => {
 
         // generate token and save
 
-        user.forEach((rec) => {
-            // console.log(`rec : ${rec.phone}`);
-            var ans1 = {
-                phone: rec.phone,
-                status: rec.isFree
-            };
+        if (user) {
+            user.forEach((rec) => {
+                // console.log(`rec : ${rec.phone}`);
+                var ans1 = {
+                    phone: rec.phone,
+                    status: rec.isFree
+                };
 
-            ans.push(ans1);
-        });
+                ans.push(ans1);
+            });
+        }
         // console.log("Pehle");
         // for (let i = 0; i < ans.length; i++) {
         //     console.log(ans[i]);
@@ -157,8 +159,6 @@ router.get('/getFreeContacts', (req, res) => {
     // }
 
 });
-
-
 
 // for exporting out routes
 module.exports = router;
