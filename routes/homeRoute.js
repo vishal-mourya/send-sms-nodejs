@@ -52,7 +52,7 @@ router.post('/register', (req, res) => {
                 data: user
             });
         } else {
-            res.send(err);
+            res.send(`error hai yeh : ${err}`);
         }
     });
 
