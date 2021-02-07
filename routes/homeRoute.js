@@ -21,6 +21,7 @@ router.get('/', (req, res) => {
 function generateOTP() {
     const _OTP = Math.floor(10000 + Math.random() * 90000);
     console.log(`_OTP : ${_OTP}`);
+    console.log(`_OTP phirse : ${_OTP}`);
     return _OTP;
 }
 
