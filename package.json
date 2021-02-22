@@ -1,5 +1,5 @@
 {
-    "name": "send-sms-with-twilio",
+    "name": "send-sms-with-nodejs",
     "version": "1.0.0",
     "description": "",
     "main": "index.js",

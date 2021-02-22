@@ -32,23 +32,6 @@ const userSchema = new mongoose.Schema({
 
 });
 
-// // With pre hook (method), we specify, before saving the document ensure to run this method
-// // We make use of this method, to hash the password with the help of bcrypt, if it is modified
-// // like at the first save, reset password, etc.
-// userSignupSchema.pre("save", function(next) {
-//     if (!this.isModified("password")) {
-//         return next();
-//     } else {
-//         bcrypt.hash(this.password, 10, (err, HashedPassword) => {
-//             if (err) {
-//                 return next(err);
-//             } else {
-//                 this.password = HashedPassword;
-//                 next();
-//             }
-//         });
-//     }
-// });
 
 // below line will simple export the code of this 
 // file, so that it is accessible from anywhere in our project

@@ -56,7 +56,3 @@ app.use('/', homeRoute);
 app.listen(port, function() {
     console.log("Server is Up and running on port : " + port);
 });
-
-// 1. Google Sinup 
-// 2. LinkedIn - signup
-// 3. Github - Signups
